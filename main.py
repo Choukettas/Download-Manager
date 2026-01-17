@@ -7,7 +7,7 @@ from colorama import Fore, Back, Style
 print(Fore.MAGENTA +'Download Manager')
 print(Style.RESET_ALL)
 
-file_download = "Your Download Folder"
+file_download = "Your Download Folder" #fill in here
 folders = ("Image","Video","Model-3D","Fichier-Compressé","Executable","Autre")
 
 conpreser = (".zip",".rar",".7z")
@@ -76,5 +76,6 @@ with os.scandir(file_download) as it:
                 destination = os.path.join(folder_locate, entry.name)
                 shutil.move(entry.path, destination)
                 print(Fore.GREEN+entry.name, "→ déplacé dans Autre")
+
 
 print(Style.RESET_ALL)
