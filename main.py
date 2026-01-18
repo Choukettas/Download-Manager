@@ -65,7 +65,7 @@ with os.scandir(file_download) as it:
           
             elif extension in executable:
                 print (Fore.YELLOW+nom,extension,"→ Executable")
-                folder_locate = os.path.join(file_download, "Executableé")
+                folder_locate = os.path.join(file_download, "Executable")
                 destination = os.path.join(folder_locate, entry.name)
                 shutil.move(entry.path, destination)
                 print(Fore.GREEN+entry.name, "→ déplacé dans Executable")
@@ -79,3 +79,4 @@ with os.scandir(file_download) as it:
 
 
 print(Style.RESET_ALL)
+
