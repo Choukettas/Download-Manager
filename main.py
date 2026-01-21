@@ -8,13 +8,14 @@ print(Fore.MAGENTA +'Download Manager')
 print(Style.RESET_ALL)
 
 file_download = "Your Download Folder" #fill in here
-folders = ("Image","Video","Model-3D","Fichier-Compressé","Executable","Autre")
+folders = ("Image","Video","Model-3D","Fichier-Compressé","Executable","Document-text","Autre")
 
 conpreser = (".zip",".rar",".7z")
 video = (".mp4",".avi", ".mkv",".mov",".wmv")
 image = (".jpg",".png",".jpeg",".gif",".svg","webp")
 model_3D =(".stl",".3mf",".obj",".amf",".step")
 executable = (".exe",".msi")
+document_text = (".txt",".doc",".docx",".csv",".xls",".ppt",".pdf",".html")
 
 with os.scandir(file_download) as it:
     for folder in folders:
@@ -69,6 +70,13 @@ with os.scandir(file_download) as it:
                 destination = os.path.join(folder_locate, entry.name)
                 shutil.move(entry.path, destination)
                 print(Fore.GREEN+entry.name, "→ déplacé dans Executable")
+            
+            elif extension in document_text:
+                print (Fore.YELLOW+nom,extension,"→ Document-text")
+                folder_locate = os.path.join(file_download, "Document-text")
+                destination = os.path.join(folder_locate, entry.name)
+                shutil.move(entry.path, destination)
+                print(Fore.GREEN+entry.name, "→ déplacé dans Document-text")
          
             else:
                 print (Fore.YELLOW+nom,extension,"→ Autre")
@@ -79,4 +87,5 @@ with os.scandir(file_download) as it:
 
 
 print(Style.RESET_ALL)
+
 
