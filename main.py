@@ -8,15 +8,16 @@ print(Fore.MAGENTA +'Download Manager')
 print(Style.RESET_ALL)
 
 file_download = "Your Download Folder" #fill in here
-folders = ("Image","Video","Model-3D","Fichier-Compressé","Executable","Document-text","Audio","Autre")
+folders = ("Image","Video","Model-3D","Fichier-Compressé","Executable","Document-text","Audio","Torrent","Autre")
 
-conpreser = (".zip",".rar",".7z")
+conpreser = (".zip",".rar",".7z",".gz")
 video = (".mp4",".avi", ".mkv",".mov",".wmv")
 audio = (".mp3",".mav",".flac",".acc",".ogg")
 image = (".jpg",".png",".jpeg",".gif",".svg","webp")
 model_3D =(".stl",".3mf",".obj",".amf",".step")
 executable = (".exe",".msi")
 document_text = (".txt",".doc",".docx",".csv",".xls",".ppt",".pdf",".html",".odt")
+torrent = (".torrent")
 
 with os.scandir(file_download) as it:
     for folder in folders:
@@ -50,6 +51,13 @@ with os.scandir(file_download) as it:
                 destination = os.path.join(folder_locate, entry.name)
                 shutil.move(entry.path, destination)
                 print(Fore.GREEN+entry.name, "→ déplacé dans Video")
+            
+            elif extension in torrent: 
+                print (Fore.YELLOW+nom,extension,"→ Torrent")
+                folder_locate = os.path.join(file_download, "Torrent")
+                destination = os.path.join(folder_locate, entry.name)
+                shutil.move(entry.path, destination)
+                print(Fore.GREEN+entry.name, "→ déplacé dans Torrent")
             
             elif extension in audio: 
                 print (Fore.YELLOW+nom,extension,"→ Audio")
@@ -95,6 +103,7 @@ with os.scandir(file_download) as it:
 
 
 print(Style.RESET_ALL)
+
 
 
 
